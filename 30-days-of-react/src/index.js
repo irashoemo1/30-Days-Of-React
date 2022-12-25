@@ -1,9 +1,5 @@
 import React from 'react'
 import ReactDOM  from 'react-dom'
-import htmlImage from './images/HTML5.png'
-import cssImage from './images/CSS.png'
-import javascriptImage from './images/javascript.png'
-import reactImage from './images/React.png'
 import iraImage from './images/Ira.jpg'
 
 const rootElement = document.getElementById('root')
@@ -17,40 +13,95 @@ const person = {
   joinDate: "November 1, 2022"
 }
 
-const header = (
+const Header = () => (
   <header>
-    <img src={iraImage} alt="Pic of myself(Ira)"></img>
+    <div className='header-wrapper'>
+      <h1>Welcome to 30 Days Of React</h1>
+      <h2>Getting Started React</h2>
+      <h3>JavaScript Library</h3>
+      <p>Instructor: {person.firstName} {person.lastName}</p>
+      <small>Oct 3, 2020</small>
+    </div>
   </header>
 )
 
-const formattedSkills = person.skills.map((tech) => <li key={tech}>{tech}</li>)
-const main = (
-  <main>
-    <h1>{person.firstName} {person.lastName}</h1>
-    <p>{person.profession}, {person.country} </p>
-    <h2>SKILLS</h2>
-    <ul>{formattedSkills}</ul>
-
-  </main>
-)
-
-const footer = (
-  <footer>
-    <p><i class="fa fa-clock-o"></i> Joined on {person.joinDate}</p>
-  </footer>
-)
-
-
-
-const app = (
-  <div className='container'>
-    {header}
-    {main}
-    {footer}
+const UserCard = () => (
+  <div className="user-card">
+    <img src={iraImage} alt='ira image'/>
+    <h2>Ira Shoemo</h2>
   </div>
 )
 
-ReactDOM.render(app, rootElement)
+
+const TechSkills = () => {
+  const formattedSkills = person.skills.map((tech) => <li key={tech}>{tech}</li>)
+  return formattedSkills
+}
+
+const Main = () => (
+    <main>
+      <div className='main-wrapper'>
+        <p>
+          Prerequisite to get started{' '}
+          <strong>
+            <em>react.js</em>
+          </strong>
+          :
+        </p>
+        <ul><TechSkills /></ul>
+        <UserCard />
+      </div>
+    </main>
+  )
+
+const Footer = () => (
+  <footer>
+    <div className='footer-wrapper'>
+      <p>Copyright 2020</p>
+    </div>
+  </footer>
+)
+
+const App = () => (
+  <div className='container'>
+    <Header />
+    <Main />
+    <Footer />
+  </div>
+)
+
+const hexColor = () => {
+  let str = '0123456789abcdef'
+  let color = ''
+  for(let i = 0; i < 6; i++)
+  {
+    let index = Math.floor(Math.random() * str.length)
+    color += str[index]
+  }
+
+  return '#' + color
+}
+
+let color1 = hexColor()
+let color2 = hexColor()
+let color3 = hexColor()
+let color4 = hexColor()
+let color5 = hexColor()
+
+
+const HexColor = () => (
+  <div>
+    <ul className="colors">
+      <li style={{backgroundColor: color1}}><p>{color1}</p></li>
+      <li style={{backgroundColor: color2}}><p>{color2}</p></li>
+      <li style={{backgroundColor: color3}}><p>{color3}</p></li>
+      <li style={{backgroundColor: color4}}><p>{color4}</p></li>
+      <li style={{backgroundColor: color5}}><p>{color5}</p></li>
+    </ul>
+  </div>
+)
+
+ReactDOM.render(<HexColor />, rootElement)
 
 // const header = (
 //   <header>
