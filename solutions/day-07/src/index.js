@@ -12,12 +12,7 @@ const UserCard = ({ user: { firstName, lastName, image } }) => (
   </div>
 )
 
-// A button component
-const Button = ({ text, onClick, style }) => (
-  <button style={style} onClick={onClick}>
-    {text}
-  </button>
-)
+
 
 // CSS styles in JavaScript Object
 const buttonStyles = {
@@ -131,8 +126,8 @@ class App extends React.Component{
   changeBackground = () => {
     console.log(this.state.style.backgroundColor)
     let dark = '#0F172A'
-    let light = 'white'
-    let background = this.state.style.backgroundColor === 'white' ? dark : light
+    let light = ''
+    let background = this.state.style.backgroundColor === '' ? dark : light
     let textColor = background === dark ? 'white' : 'black' 
     this.setState({style: {backgroundColor: background, color: textColor}})
     console.log(background)
